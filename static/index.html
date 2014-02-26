@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Tornado Connection Demo</title>
+</head>
+<body>
+
+<script src="/static/sockjs-0.3.4/sockjs.js"></script>
+<script src="/static/continuous.js"></script>
+
+<script type="text/javascript">   
+    var conn = null;
+    
+    function load() {
+        conn = new SockJS('http://' + window.location.host + '/sockjs/broadcast');
+        
+        conn.onopen = function() {
+            setTimeout(function () {
+                window.location = window.location;
+            }, 1000);
+        };
+        
+        conn.onmessage = function(e) {
+            
+        };
+    };
+    
+    window.onload = load;
+</script>
+
+</body>
+</html>
